@@ -255,7 +255,8 @@ module "gke" {
 
   project_id        = var.project_id
   name              = "zeet-${var.cluster_name}"
-  release_channel   = "STABLE"
+  release_channel   = "UNSPECIFIED"
+  kubernetes_version = "1.27.8-gke.1067004"
   region            = var.region
   regional          = false
   zones             = [var.zone]
