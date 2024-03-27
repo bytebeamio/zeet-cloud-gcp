@@ -424,6 +424,18 @@ module "gke" {
       ZeetUserId    = var.user_id
     }
 
+    c2d-standard-16-clickhouse = {
+      "instanceKind" = "clickhouse"
+    }
+
+    c2d-standard-4-daemon = {
+      "instanceKind" = "daemon"
+    }
+
+    c2d-standard-4-parser = {
+      "instanceKind" = "parser"
+    }
+
     e2-standard-2-system = {
       "zeet.co/dedicated" = "system"
     }
