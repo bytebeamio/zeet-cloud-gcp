@@ -289,22 +289,6 @@ module "gke" {
 
   node_pools = concat([
     {
-      name                      = "c2d-standard-4-parser"
-      machine_type              = "c2d-standard-4"
-      node_locations            = var.zone
-      min_count                 = 2
-      max_count                 = 6
-      local_ssd_count           = 0
-      local_ssd_ephemeral_count = 0
-      disk_size_gb              = 100
-      disk_type                 = "pd-standard"
-      image_type                = "COS_CONTAINERD"
-      auto_repair               = true
-      auto_upgrade              = false
-      preemptible               = false
-      initial_node_count        = 1
-    },
-    {
       name                      = "c2d-standard-4-daemon"
       machine_type              = "c2d-standard-4"
       node_locations            = var.zone
@@ -319,23 +303,7 @@ module "gke" {
       auto_upgrade              = false
       preemptible               = false
       initial_node_count        = 1
-    },
-    {
-      name                      = "c2d-standard-16-clickhouse"
-      machine_type              = "c2d-standard-16"
-      node_locations            = var.zone
-      min_count                 = 1
-      max_count                 = 3
-      local_ssd_count           = 0
-      local_ssd_ephemeral_count = 0
-      disk_size_gb              = 100
-      disk_type                 = "pd-standard"
-      image_type                = "COS_CONTAINERD"
-      auto_repair               = true
-      auto_upgrade              = false
-      preemptible               = false
-      initial_node_count        = 1
-    },
+    },    
     {
       name                      = "e2-standard-2-system"
       machine_type              = "e2-standard-2"
@@ -393,16 +361,8 @@ module "gke" {
       ZeetUserId    = var.user_id
     }
 
-    c2d-standard-16-clickhouse = {
-      "instanceKind" = "clickhouse"
-    }
-
     c2d-standard-4-daemon = {
       "instanceKind" = "daemon"
-    }
-
-    c2d-standard-4-parser = {
-      "instanceKind" = "parser"
     }
 
     e2-standard-2-system = {
